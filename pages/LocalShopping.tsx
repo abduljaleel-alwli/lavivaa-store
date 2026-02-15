@@ -60,13 +60,13 @@ export const LocalShopping: React.FC = () => {
     <div className="bg-slate-50 min-h-screen py-12 animate-fade-in">
       <div className="container mx-auto px-4">
         
-        {/* Header Area */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-           <div className="text-right">
+        {/* Header */}
+        <div className={`flex flex-col md:flex-row justify-between items-end mb-12 gap-6 ${lang === 'en' ? 'text-left' : 'text-right'}`}>
+           <div className="w-full">
              <h1 className="text-4xl font-black text-slate-900 mb-2 tracking-tight">{t.localShopping}</h1>
              <div className="flex items-center gap-2 text-slate-400 font-bold">
                 <span className="w-8 h-1 bg-primary rounded-full"></span>
-                <span>{filteredProducts.length} منتجات تم العثور عليها</span>
+                <span>{filteredProducts.length} {t.productsFound}</span>
              </div>
            </div>
            
@@ -80,7 +80,7 @@ export const LocalShopping: React.FC = () => {
 
         <div className="flex flex-col md:flex-row gap-12">
           
-          {/* Advanced Sidebar Filter - Custom Green Theme */}
+          {/* Sidebar */}
           <aside className={`md:w-80 flex-shrink-0 ${showMobileFilter ? 'fixed inset-0 z-50 bg-primary p-8 overflow-y-auto' : 'hidden md:block'}`}>
             <div className="md:sticky md:top-28 space-y-8">
                
@@ -92,11 +92,10 @@ export const LocalShopping: React.FC = () => {
                     <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-accent shadow-inner">
                        <Filter size={20} />
                     </div>
-                    <span>التصنيفات</span>
+                    <span>{t.category}</span>
                   </div>
 
                   <ul className="space-y-3 relative z-10">
-                    {/* View All Option */}
                     <li>
                       <button 
                         onClick={() => {
@@ -134,9 +133,8 @@ export const LocalShopping: React.FC = () => {
                           )}
                         </div>
 
-                        {/* Sub-Categories */}
                         {cat.subCategories && expandedCategory === cat.id && (
-                          <div className="pr-4 py-2 space-y-1 animate-fade-in">
+                          <div className={`py-2 space-y-1 animate-fade-in ${lang === 'en' ? 'pl-4' : 'pr-4'}`}>
                             {cat.subCategories.map(sub => (
                               <button 
                                 key={sub.id}
@@ -156,28 +154,28 @@ export const LocalShopping: React.FC = () => {
                   </ul>
                </div>
 
-               {/* Age Group Card */}
+               {/* Age Group */}
                <div className="bg-primary p-8 rounded-[2.5rem] shadow-2xl shadow-primary/20 border border-white/5 relative overflow-hidden">
-                  <h3 className="font-black mb-6 text-[10px] uppercase tracking-[0.2em] text-white/30">الفئة العمرية</h3>
+                  <h3 className="font-black mb-6 text-[10px] uppercase tracking-[0.2em] text-white/30">{t.ageGroup}</h3>
                   <div className="grid grid-cols-2 gap-3">
                      <button 
                         onClick={() => setSelectedAge(selectedAge === 'adult' ? null : 'adult')}
                         className={`p-5 rounded-3xl border-2 transition-all flex flex-col items-center gap-3 font-black ${selectedAge === 'adult' ? 'border-accent bg-accent/10 text-accent shadow-lg shadow-accent/5' : 'border-white/5 text-white/40 hover:border-white/20'}`}
                      >
                         <Users size={24} className="text-accent" />
-                        <span className="text-[10px]">كبار</span>
+                        <span className="text-[10px]">{t.adult}</span>
                      </button>
                      <button 
                         onClick={() => setSelectedAge(selectedAge === 'child' ? null : 'child')}
                         className={`p-5 rounded-3xl border-2 transition-all flex flex-col items-center gap-3 font-black ${selectedAge === 'child' ? 'border-accent bg-accent/10 text-accent shadow-lg shadow-accent/5' : 'border-white/5 text-white/40 hover:border-white/20'}`}
                      >
                         <Baby size={24} className="text-accent" />
-                        <span className="text-[10px]">صغار</span>
+                        <span className="text-[10px]">{t.child}</span>
                      </button>
                   </div>
                </div>
 
-               {/* Price Range Card */}
+               {/* Price Range */}
                <div className="bg-primary p-8 rounded-[2.5rem] shadow-2xl shadow-primary/20 border border-white/5">
                   <h3 className="font-black mb-8 text-[10px] uppercase tracking-[0.2em] text-white/30">{t.price}</h3>
                   <div className="px-1">
@@ -203,13 +201,13 @@ export const LocalShopping: React.FC = () => {
                     className="w-full bg-accent text-primary py-5 rounded-[2rem] font-black mt-10 shadow-2xl uppercase tracking-widest text-sm"
                     onClick={() => setShowMobileFilter(false)}
                  >
-                   تطبيق الفلترة
+                   {t.applyFilter}
                  </button>
                )}
             </div>
           </aside>
 
-          {/* Product Grid Area */}
+          {/* Grid Area */}
           <div className="flex-1">
              {filteredProducts.length > 0 ? (
                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -218,12 +216,14 @@ export const LocalShopping: React.FC = () => {
                  ))}
                </div>
              ) : (
-               <div className="h-[500px] flex flex-col items-center justify-center bg-white rounded-5xl shadow-2xl border border-slate-100">
+               <div className="h-[500px] flex flex-col items-center justify-center bg-white rounded-5xl shadow-2xl border border-slate-100 p-8 text-center">
                  <div className="bg-slate-50 w-32 h-32 rounded-full flex items-center justify-center text-slate-200 mb-8">
                     <SlidersHorizontal size={48} />
                  </div>
-                 <h3 className="text-2xl font-black text-slate-900 mb-4">لا توجد منتجات مطابقة</h3>
-                 <p className="text-slate-400 font-medium mb-10 max-w-sm text-center">جرب تغيير إعدادات الفلترة أو مسح الكل للوصول إلى خيارات أكثر.</p>
+                 <h3 className="text-2xl font-black text-slate-900 mb-4">{t.noProductsFound}</h3>
+                 <p className="text-slate-400 font-medium mb-10 max-w-sm">
+                   {t.noProductsDesc}
+                 </p>
                  <button 
                    onClick={() => { 
                      setSelectedCategory('all'); 
@@ -233,7 +233,7 @@ export const LocalShopping: React.FC = () => {
                    }} 
                    className="bg-primary text-white px-10 py-4 rounded-3xl font-black shadow-xl hover:shadow-primary/30 transition-all active:scale-95"
                  >
-                   مسح جميع الفلاتر
+                   {t.clearFilters}
                  </button>
                </div>
              )}
