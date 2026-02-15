@@ -11,7 +11,6 @@ import {
   Facebook, 
   Twitter, 
   Instagram, 
-  Youtube, 
   Phone, 
   MapPin, 
   Mail, 
@@ -83,10 +82,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 <Menu size={24} />
               </button>
               <Link to="/" className="flex items-center gap-2 group">
-                <div className="bg-accent p-1.5 rounded-xl shadow-lg shadow-accent/20 group-hover:scale-110 transition-transform">
-                  <ShoppingBag size={24} className="text-primary" />
-                </div>
-                <span className="text-2xl font-black tracking-tighter text-white">LAVIVAA</span>
+                <img src="logo.png" alt="LAVIVAA" className="h-12 w-auto object-contain group-hover:scale-105 transition-transform" />
               </Link>
             </div>
 
@@ -136,7 +132,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         <div className="fixed inset-0 z-50 bg-primary/40 backdrop-blur-sm md:hidden" onClick={() => setIsMobileMenuOpen(false)}>
           <div className="absolute top-0 right-0 w-4/5 h-full bg-primary p-8 shadow-2xl overflow-y-auto animate-fade-in" onClick={(e) => e.stopPropagation()}>
              <div className="flex justify-between items-center mb-10">
-               <span className="text-2xl font-black text-white tracking-tighter">LAVIVAA</span>
+               <img src="logo.png" alt="LAVIVAA" className="h-10 w-auto object-contain" />
                <button onClick={() => setIsMobileMenuOpen(false)} className="text-white/50 hover:text-accent"><X size={28} /></button>
              </div>
              <nav className="flex flex-col gap-6">
@@ -175,12 +171,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16">
              {/* Brand */}
              <div className="flex flex-col space-y-6">
-                <div className="flex items-center gap-2 group">
-                  <div className="bg-accent p-1.5 rounded-xl shadow-lg shadow-accent/10">
-                    <ShoppingBag size={24} className="text-primary" />
-                  </div>
-                  <span className="text-2xl font-black tracking-tighter text-white">LAVIVAA</span>
-                </div>
+                <Link to="/" className="inline-block group">
+                  <img src="logo.png" alt="LAVIVAA" className="h-14 w-auto object-contain group-hover:scale-105 transition-transform" />
+                </Link>
                 <p className="text-white/60 text-base leading-relaxed font-medium max-w-xs">
                   {t.footerDesc}
                 </p>
