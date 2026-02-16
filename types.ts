@@ -1,5 +1,5 @@
 
-export type Language = 'ar' | 'en' | 'he';
+export type Language = 'ar' | 'en';
 
 export interface Product {
   id: string;
