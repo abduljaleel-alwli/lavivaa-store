@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Language, CartItem, Product } from './types';
@@ -8,6 +9,9 @@ import { LocalShopping } from './pages/LocalShopping';
 import { GlobalShopping } from './pages/GlobalShopping';
 import { ProductDetails } from './pages/ProductDetails';
 import { Checkout } from './pages/Checkout';
+import { Login } from './pages/Login';
+import { Signup } from './pages/Signup';
+import { MerchantOnboarding } from './pages/MerchantOnboarding';
 
 // Context Definitions
 interface AppContextType {
@@ -79,6 +83,9 @@ const App: React.FC = () => {
             <Route path="/global-shopping" element={<GlobalShopping />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/merchant-signup" element={<MerchantOnboarding />} />
           </Routes>
         </Layout>
       </HashRouter>

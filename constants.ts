@@ -3,6 +3,39 @@ import { Category, GlobalStore, Product } from './types';
 
 export const DELIVERY_FEE = 20;
 
+export const MERCHANT_PLANS = [
+  {
+    id: 'starter',
+    name: { ar: 'الباقة الأساسية', en: 'Starter Plan' },
+    price: 100,
+    features: {
+      ar: ['رفع حتى 50 منتج', 'لوحة تحكم بسيطة', 'دعم عبر البريد', 'تقارير مبيعات شهرية'],
+      en: ['Up to 50 products', 'Basic dashboard', 'Email support', 'Monthly sales reports']
+    },
+    recommended: false
+  },
+  {
+    id: 'pro',
+    name: { ar: 'الباقة الاحترافية', en: 'Pro Plan' },
+    price: 250,
+    features: {
+      ar: ['منتجات غير محدودة', 'تحليلات متقدمة', 'دعم فني 24/7', 'أولوية الظهور في البحث', 'أدوات تسويقية'],
+      en: ['Unlimited products', 'Advanced analytics', '24/7 Priority support', 'Search priority', 'Marketing tools']
+    },
+    recommended: true
+  },
+  {
+    id: 'enterprise',
+    name: { ar: 'باقة الشركات', en: 'Enterprise Plan' },
+    price: 500,
+    features: {
+      ar: ['كل ميزات البرو', 'مدير حساب مخصص', 'ربط API خاص', 'تصوير منتجات احترافي', 'حملات إعلانية ممولة'],
+      en: ['All Pro features', 'Dedicated manager', 'Custom API access', 'Professional photography', 'Sponsored campaigns']
+    },
+    recommended: false
+  }
+];
+
 export const GLOBAL_STORES: GlobalStore[] = [
   { 
     id: '1', 
@@ -289,6 +322,48 @@ export const TRANSLATIONS = {
     globalSlide2Sub: 'اكتشف تشكيلات حصرية من برانداتك العالمية المفضلة بأسعار تنافسية.',
     globalSlide3Title: 'تكنولوجيا بلا حدود',
     globalSlide3Sub: 'أحدث الأدوات والتقنيات الذكية تصلك من متاجر التجزئة الكبرى.',
+    login: 'تسجيل الدخول',
+    signup: 'إنشاء حساب جديد',
+    customer: 'عميل',
+    merchant: 'تاجر',
+    emailLabel: 'البريد الإلكتروني',
+    passwordLabel: 'كلمة السر',
+    fullNameLabel: 'الاسم الكامل',
+    mobileLabel: 'رقم الجوال',
+    alreadyHaveAccount: 'لديك حساب بالفعل؟',
+    dontHaveAccount: 'ليس لديك حساب؟',
+    loginNow: 'سجل دخولك الآن',
+    signupNow: 'اشترك الآن',
+    authWelcome: 'مرحباً بك في LAVIVAA',
+    customerBenefit1: 'تتبع طلباتك بكل سهولة.',
+    customerBenefit2: 'خصومات حصرية للأعضاء.',
+    customerBenefit3: 'عملية شراء أسرع وأكثر أماناً.',
+    merchantBenefit1: 'لوحة تحكم ذكية لمنتجاتك.',
+    merchantBenefit2: 'الوصول لآلاف العملاء يومياً.',
+    merchantBenefit3: 'إدارة مخزون ومبيعات متطورة.',
+    openStore: 'فتح متجر جديد',
+    startSelling: 'ابدأ البيع الآن',
+    storeName: 'اسم المتجر',
+    businessType: 'نوع النشاط',
+    storeCategory: 'فئة المتجر',
+    storeDescription: 'وصف المتجر',
+    storeLogo: 'شعار المتجر (اختياري)',
+    next: 'التالي',
+    back: 'السابق',
+    choosePlan: 'اختر باقة الاشتراك',
+    plansSub: 'اختر الباقة التي تناسب حجم طموحاتك ونوع نشاطك التجاري.',
+    payNow: 'ادفع الآن',
+    paymentMethod: 'طريقة الدفع',
+    orderTotal: 'إجمالي مبلغ الاشتراك',
+    recommended: 'موصى به',
+    month: 'شهر',
+    step1: 'البيانات الشخصية',
+    step2: 'بيانات المتجر',
+    step3: 'الباقة',
+    step4: 'الدفع',
+    merchantOnboardingTitle: 'انطلق بتجارتك للعالمية مع LAVIVAA',
+    merchantOnboardingSub: 'خطوات بسيطة تفصلك عن امتلاك متجرك الخاص والوصول لآلاف العملاء.',
+    paymentNote: 'ملاحظة: لا يتم تفعيل حساب التاجر إلا بعد إتمام عملية الدفع بنجاح.',
   },
   en: {
     home: 'Home',
@@ -410,5 +485,47 @@ export const TRANSLATIONS = {
     globalSlide2Sub: 'Discover exclusive collections from your favorite global brands at competitive prices.',
     globalSlide3Title: 'Technology Without Limits',
     globalSlide3Sub: 'The latest smart tools and tech delivered to you from major global retailers.',
+    login: 'Login',
+    signup: 'Create New Account',
+    customer: 'Customer',
+    merchant: 'Merchant',
+    emailLabel: 'Email Address',
+    passwordLabel: 'Password',
+    fullNameLabel: 'Full Name',
+    mobileLabel: 'Mobile Number',
+    alreadyHaveAccount: 'Already have an account?',
+    dontHaveAccount: 'Don\'t have an account?',
+    loginNow: 'Login Now',
+    signupNow: 'Sign up Now',
+    authWelcome: 'Welcome to LAVIVAA',
+    customerBenefit1: 'Easy order tracking.',
+    customerBenefit2: 'Exclusive member discounts.',
+    customerBenefit3: 'Faster and safer purchases.',
+    merchantBenefit1: 'Smart product dashboard.',
+    merchantBenefit2: 'Reach thousands of daily customers.',
+    merchantBenefit3: 'Advanced inventory management.',
+    openStore: 'Open New Store',
+    startSelling: 'Start Selling Now',
+    storeName: 'Store Name',
+    businessType: 'Business Type',
+    storeCategory: 'Store Category',
+    storeDescription: 'Store Description',
+    storeLogo: 'Store Logo (Optional)',
+    next: 'Next',
+    back: 'Back',
+    choosePlan: 'Choose Subscription Plan',
+    plansSub: 'Select the package that best fits your business goals.',
+    payNow: 'Pay Now',
+    paymentMethod: 'Payment Method',
+    orderTotal: 'Total Subscription Amount',
+    recommended: 'Recommended',
+    month: 'Month',
+    step1: 'Personal Info',
+    step2: 'Store Details',
+    step3: 'Plan',
+    step4: 'Payment',
+    merchantOnboardingTitle: 'Go Global with your Business',
+    merchantOnboardingSub: 'Simple steps to own your store and reach thousands of customers.',
+    paymentNote: 'Note: Merchant accounts are activated only after successful payment.',
   }
 };

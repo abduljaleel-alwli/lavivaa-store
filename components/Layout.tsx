@@ -14,7 +14,8 @@ import {
   Phone, 
   MapPin, 
   Mail, 
-  MessageCircle 
+  MessageCircle,
+  Store
 } from 'lucide-react';
 import { DELIVERY_FEE, CATEGORIES } from '../constants';
 
@@ -53,6 +54,11 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
              </div>
           </div>
           <div className="flex items-center gap-4">
+            <Link to="/merchant-signup" className="flex items-center gap-2 text-accent font-black hover:text-white transition-colors">
+              <Store size={12} />
+              <span>{t.startSelling}</span>
+            </Link>
+            <div className="h-3 w-px bg-white/10"></div>
             <div className="flex gap-4">
               <Facebook size={12} className="hover:text-accent cursor-pointer transition-all" />
               <Twitter size={12} className="hover:text-accent cursor-pointer transition-all" />
@@ -81,7 +87,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 <Menu size={24} />
               </button>
               <Link to="/" className="flex items-center gap-2 group">
-                <img src="logo.png" alt="LAVIVAA" className="h-12 w-auto object-contain group-hover:scale-105 transition-transform" />
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5DRasl3ZaS4vcAnzYRVU1rXQArDgNHt7RpNJY-zvzC-RJp-dqR6SrunlI3IPaTUOH_CD0RkWoU6cRgn9AFbYCWjJZRJCroqSFe-NVitmZ2RiWeJbbi3Ragze8toPuJLHRzEpq_D9Kj5_jova12Czqvn_6opFrTEv9hjx7mZxvb_m6ADQAno6E96waLvA/s16000/logo.png" alt="LAVIVAA" className="h-12 w-auto object-contain group-hover:scale-105 transition-transform" />
               </Link>
             </div>
 
@@ -106,9 +112,12 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 </div>
               </div>
               
-              <button className="hidden md:block text-white/70 hover:text-accent transition-all transform hover:scale-110">
+              <Link 
+                to="/login"
+                className="hidden md:block text-white/70 hover:text-accent transition-all transform hover:scale-110"
+              >
                 <User size={22} />
-              </button>
+              </Link>
               
               <button 
                 className="relative text-white/70 hover:text-accent transition-all transform hover:scale-110"
@@ -131,13 +140,19 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         <div className="fixed inset-0 z-50 bg-primary/40 backdrop-blur-sm md:hidden" onClick={() => setIsMobileMenuOpen(false)}>
           <div className="absolute top-0 right-0 w-4/5 h-full bg-primary p-8 shadow-2xl overflow-y-auto animate-fade-in" onClick={(e) => e.stopPropagation()}>
              <div className="flex justify-between items-center mb-10">
-               <img src="logo.png" alt="LAVIVAA" className="h-10 w-auto object-contain" />
+               <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5DRasl3ZaS4vcAnzYRVU1rXQArDgNHt7RpNJY-zvzC-RJp-dqR6SrunlI3IPaTUOH_CD0RkWoU6cRgn9AFbYCWjJZRJCroqSFe-NVitmZ2RiWeJbbi3Ragze8toPuJLHRzEpq_D9Kj5_jova12Czqvn_6opFrTEv9hjx7mZxvb_m6ADQAno6E96waLvA/s16000/logo.png" alt="LAVIVAA" className="h-10 w-auto object-contain" />
                <button onClick={() => setIsMobileMenuOpen(false)} className="text-white/50 hover:text-accent"><X size={28} /></button>
              </div>
              <nav className="flex flex-col gap-6">
                 <NavLink to="/" label={t.home} />
                 <NavLink to="/local-shopping" label={t.localShopping} />
                 <NavLink to="/global-shopping" label={t.globalShopping} />
+                <Link to="/merchant-signup" onClick={() => setIsMobileMenuOpen(false)} className="text-sm font-bold text-accent flex items-center gap-2">
+                   <Store size={18} /> {t.startSelling}
+                </Link>
+                <Link to="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-sm font-bold text-white/80 hover:text-accent flex items-center gap-2">
+                   <User size={18} /> {t.login}
+                </Link>
                 <div className="h-px bg-white/5 my-4"></div>
                 <div className="flex items-center justify-between text-white/60 font-bold">
                   <span>اللغة</span>
@@ -170,7 +185,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
              {/* Brand */}
              <div className="flex flex-col space-y-6">
                 <Link to="/" className="inline-block group">
-                  <img src="logo.png" alt="LAVIVAA" className="h-14 w-auto object-contain group-hover:scale-105 transition-transform" />
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5DRasl3ZaS4vcAnzYRVU1rXQArDgNHt7RpNJY-zvzC-RJp-dqR6SrunlI3IPaTUOH_CD0RkWoU6cRgn9AFbYCWjJZRJCroqSFe-NVitmZ2RiWeJbbi3Ragze8toPuJLHRzEpq_D9Kj5_jova12Czqvn_6opFrTEv9hjx7mZxvb_m6ADQAno6E96waLvA/s16000/logo.png" alt="LAVIVAA" className="h-14 w-auto object-contain group-hover:scale-105 transition-transform" />
                 </Link>
                 <p className="text-white/60 text-base leading-relaxed font-medium max-w-xs">
                   {t.footerDesc}
@@ -190,7 +205,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 <ul className="space-y-4 text-white/60 font-bold">
                   <li><Link to="/local-shopping" className="hover:text-accent transition-all inline-block">{t.localShopping}</Link></li>
                   <li><Link to="/global-shopping" className="hover:text-accent transition-all inline-block">{t.globalShopping}</Link></li>
-                  <li><Link to="/" className="hover:text-accent transition-all inline-block">{t.about}</Link></li>
+                  <li><Link to="/merchant-signup" className="hover:text-accent transition-all inline-block">{t.startSelling}</Link></li>
                 </ul>
              </div>
 
